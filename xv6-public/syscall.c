@@ -140,7 +140,7 @@ syscall(void)
   struct proc *curproc = myproc();
 
 //Creating an array to store all the syscalls names
-  char* calls_names[23];
+  /*char* calls_names[23];
   //assign syscalls names in order
   calls_names[0] = "sys_fork";
   calls_names[1] = "sys_exit";
@@ -164,12 +164,12 @@ syscall(void)
   calls_names[19] = "sys_mkdir";
   calls_names[20] = "sys_close";
   calls_names[21] = "sys_shutdown";
-  calls_names[22] = "sys_reboot";
+  calls_names[22] = "sys_reboot";*/
 
   num = curproc->tf->eax;
   if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
     curproc->tf->eax = syscalls[num]();
-    cprintf("%s -> %d", calls_names[num-1], num);
+    //cprintf("%s -> %d", calls_names[num-1], num);
   } else {
     cprintf("%d %s: unknown sys call %d\n",
             curproc->pid, curproc->name, num);
